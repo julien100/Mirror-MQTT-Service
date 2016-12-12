@@ -12,6 +12,9 @@ Module.register('MMM-MQTT-Service',{
 	},
 	// Override socket notification handler.
 	socketNotificationReceived: function(notification, payload) {
+		console.log(notification);
+		console.log(payload);
+
 		if (notification === "MQTT_COMMAND") {
 			if (payload.receiver === "VOICE_FOOTBALL") {
 				this.sendNotification("VOICE_FOOTBALL" , payload.command);
