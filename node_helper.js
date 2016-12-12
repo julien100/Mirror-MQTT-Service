@@ -13,7 +13,7 @@ module.exports = NodeHelper.create({
   start: function () {
     client.on('connect', () => {
       client.subscribe('MagicMirror');
-      console.log("subscribed");
+      console.log("Subscribed to Magic Mirror!");
     });
 
 client.on('message', (topic, message) => {
