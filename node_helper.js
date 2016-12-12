@@ -17,8 +17,8 @@ module.exports = NodeHelper.create({
     });
 
 client.on('message', (topic, message) => {
-      console.log(message.payload);
       console.log(topic);
+      console.log(message);
     });
     this.started = false;
   },
