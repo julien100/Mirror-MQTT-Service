@@ -18,7 +18,7 @@ module.exports = NodeHelper.create({
 
 client.on('message', (topic, message) => {
       console.log(topic);
-      console.log(message);
+      console.log(message.toString('utf8'));
     });
     this.started = false;
   },
