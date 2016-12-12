@@ -20,20 +20,14 @@ module.exports = NodeHelper.create({
 
 client.on('message', (topic, message) => {
       var data = JSON.parse(message.toString('utf8'));
-      console.log(data);
-      console.log(topic + ": " + data.receiver + " " + data.command);
-      this.sendSocketNotification("MQTT_COMMAND", data);
-
 
       if(data.command === "GO_TO_SLEEP"){
         exec("/opt/vc/bin/tvservice -o", null);
       } else if (data.command === "WAKE_UP") {
         exec("/opt/vc/bin/tvservice -p && sudo chvt 6 && sudo chvt 7", null);
       } else {
-        console.log("MQTT-Service...sending notification");
         this.sendSocketNotification("MQTT_COMMAND", data);
       }
-
     });
 
 
