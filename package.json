@@ -1,0 +1,19 @@
+{
+  "name": "Magic-Mirror-MQTT-Service",
+  "version": "1.0.0",
+  "description": "",
+  "repository": {
+    "type": "",
+    "url": ""
+  },
+  "keywords": [
+    "magic mirror"
+  ],
+  "author": "julien100",
+  "contributors": "",
+  "license": "",
+  "homepage": "",
+  "dependencies": {
+    "mqtt": "^2.1.3"
+  }
+}
