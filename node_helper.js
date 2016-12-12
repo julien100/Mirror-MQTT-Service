@@ -29,7 +29,7 @@ client.on('message', (topic, message) => {
         exec("/opt/vc/bin/tvservice -p && sudo chvt 6 && sudo chvt 7", null);
       } else {
         console.log("MQTT-Service...sending notification");
-        this.sendSocketNotification("MQTT_COMMAND", data);
+        this.sendNotification("MQTT_COMMAND", data);
       }
 
     });
