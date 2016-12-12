@@ -19,7 +19,6 @@ Module.register('MMM-MQTT-Service',{
 		console.log(payload);
 	},
 	start: function() {
-		this.sendSocketNotification('BUTTON_CONFIG', this.config);
 		Log.info('Starting module: ' + this.name);
 	}
 });

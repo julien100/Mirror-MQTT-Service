@@ -19,8 +19,10 @@ module.exports = NodeHelper.create({
     });
 
 client.on('message', (topic, message) => {
-      console.log(topic);
-      var command = message.toString('utf8');
+      var command = JSON.parse(message.toString('utf8'));
+      console.log(topic + ": " + message);
+      console.log(command);
+
 
       if(command === "GO_TO_SLEEP"){
         exec("/opt/vc/bin/tvservice -o", null);
