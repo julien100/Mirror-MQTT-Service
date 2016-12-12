@@ -20,6 +20,7 @@ module.exports = NodeHelper.create({
 
 client.on('message', (topic, message) => {
       var command = message.toString('utf8');
+      var jsonCommand = JSON.parse(command);
       console.log(topic + ": " + command);
       console.log(command);
 
