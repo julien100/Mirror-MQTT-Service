@@ -13,10 +13,10 @@ Module.register('MMM-MQTT-Service',{
 	// Override socket notification handler.
 	socketNotificationReceived: function(notification, payload) {
 		if (notification === "MQTT_COMMAND") {
-			this.sendNotification("VOICE_FOOTBALL" , payload);
+			if (payload.receiver === "VOICE_FOOTBALL") {
+				this.sendNotification("VOICE_FOOTBALL" , payload.command);
+			}
 		}
-		console.log(notification);
-		console.log(payload);
 	},
 	start: function() {
 		Log.info('Starting module: ' + this.name);

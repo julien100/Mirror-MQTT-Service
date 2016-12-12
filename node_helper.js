@@ -19,18 +19,15 @@ module.exports = NodeHelper.create({
     });
 
 client.on('message', (topic, message) => {
-      var command = message.toString('utf8');
-      var jsonCommand = JSON.parse(command);
-      console.log(topic + ": " + command);
-      console.log(jsonCommand);
+      var data = JSON.parse(message.toString('utf8'));
+      console.log(topic + ": " + data);
 
-
-      if(command === "GO_TO_SLEEP"){
+      if(data.command === "GO_TO_SLEEP"){
         exec("/opt/vc/bin/tvservice -o", null);
-      } else if (command === "WAKE_UP") {
+      } else if (data.command === "WAKE_UP") {
         exec("/opt/vc/bin/tvservice -p && sudo chvt 6 && sudo chvt 7", null);
       } else {
-        this.sendSocketNotification("MQTT_COMMAND", command);
+        this.sendSocketNotification("MQTT_COMMAND", data);
       }
 
     });
