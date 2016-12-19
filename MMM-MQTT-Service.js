@@ -33,6 +33,10 @@ Module.register('MMM-MQTT-Service',{
                 	});
 				} else if (payload.command === "HIDE_MODULE") {
 					console.log("Hide Module: " + payload.value);
+					var modules = MM.getModules();
+					console.log(modules);
+				} else if (payload.command === "SHOW_MODULE") {
+					console.log("Show Module: " + payload.value);
 				}
 			} else if (payload.receiver === "PODCAST") {
 				console.log("podcast is receiver");
