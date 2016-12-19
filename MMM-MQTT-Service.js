@@ -15,15 +15,7 @@ Module.register('MMM-MQTT-Service',{
 		console.log(notification);
 		console.log(payload);
 
-		if (notification === "ALL_MODULES_STARTED") {
-			console.log("debug");
-			MM.getModules().enumerate(function(module) {
-					console.log(module);
-					// module.hide(1000, function() {
-					// 				//Module shown.
-					// 			});
-			});
-		} else if (notification === "MQTT_COMMAND") {
+		if (notification === "MQTT_COMMAND") {
 			if (payload.receiver === "VOICE_FOOTBALL") {
 				this.sendNotification("VOICE_FOOTBALL" , payload.command);
 			} else if (payload.receiver === "MQTT-SERVICE"){
@@ -83,5 +75,16 @@ Module.register('MMM-MQTT-Service',{
 	start: function() {
 		this.sendSocketNotification('BUTTON_CONFIG', this.config);
 		Log.info('Starting module: ' + this.name);
+	},
+	notificationReceived: function() {
+		if (notification === "ALL_MODULES_STARTED") {
+			console.log("debug");
+			MM.getModules().enumerate(function(module) {
+					console.log(module);
+					// module.hide(1000, function() {
+					// 				//Module shown.
+					// 			});
+			});
+		}
 	}
 });
