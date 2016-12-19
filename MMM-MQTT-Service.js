@@ -75,6 +75,7 @@ Module.register('MMM-MQTT-Service',{
 	start: function() {
 		this.sendSocketNotification('BUTTON_CONFIG', this.config);
 		Log.info('Starting module: ' + this.name);
+		console.log("debug");
 		MM.getModules().enumerate(function(module) {
 				console.log(module);
 				// module.hide(1000, function() {
