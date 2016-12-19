@@ -33,8 +33,14 @@ Module.register('MMM-MQTT-Service',{
                 	});
 				} else if (payload.command === "HIDE_MODULE") {
 					console.log("Hide Module: " + payload.value);
-					var modules = MM.getModules();
-					console.log(modules);
+					if (payload.value === 'NFL') {
+						var moduleToHide = 'MMM-NFL';
+					}
+					var modules = MM.getModules().withClass(moduleToHide)enumerate(function(module) {
+	    				module.hide(1000, function() {
+                    	//Module hidden.
+                		});
+					});;
 				} else if (payload.command === "SHOW_MODULE") {
 					console.log("Show Module: " + payload.value);
 				}
