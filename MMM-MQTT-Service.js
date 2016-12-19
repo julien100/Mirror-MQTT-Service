@@ -17,7 +17,27 @@ Module.register('MMM-MQTT-Service',{
 
 		if (notification === "MQTT_COMMAND") {
 			if (payload.receiver === "VOICE_FOOTBALL") {
-			this.sendNotification("VOICE_FOOTBALL" , payload.command);
+				this.sendNotification("VOICE_FOOTBALL" , payload.command);
+			} else if (payload.receiver === "MQTT-SERVICE"){
+				if (payload.command === "GO_TO_SLEEP") {
+					MM.getModules().enumerate(function(module) {
+	    				module.hide(1000, function() {
+                    	//Module hidden.
+                		});
+					});
+				} else if (payload.command === "WAKE_UP") {
+					MM.getModules().enumerate(function(module) {
+	    				module.show(1000, function() {
+                    	//Module hidden.
+                		});
+                	});
+				}
+			} else if (payload.receiver === "PODCAST") {
+				console.log("podcast is receiver");
+				if (payload.command === "START_PODCAST") {
+					console.log("start podcast");
+					this.sendNotification("PODCAST", payload.command);
+				}
 			}
 
 		}
