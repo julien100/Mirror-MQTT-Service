@@ -38,6 +38,8 @@ Module.register('MMM-MQTT-Service',{
 						moduleToHide = 'MMM-NFL';
 					} else if (payload.value === 'clock') {
 						moduleToHide = 'clock';
+					} else if (payload.value === 'comic') {
+						moduleToHide = 'DailyXKCD';
 					}
 					MM.getModules().withClass(moduleToHide).enumerate(function(module) {
 	    				module.hide(1000, function() {
@@ -51,6 +53,8 @@ Module.register('MMM-MQTT-Service',{
 						moduleToShow = 'MMM-NFL';
 					} else if (payload.value === 'clock') {
 						moduleToShow = 'clock';
+					} else if (payload.value === 'comic') {
+						moduleToHide = 'DailyXKCD';
 					}
 					MM.getModules().withClass(moduleToShow).enumerate(function(module) {
 	    				module.show(1000, function() {
