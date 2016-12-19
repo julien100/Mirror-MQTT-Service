@@ -36,11 +36,11 @@ Module.register('MMM-MQTT-Service',{
 					if (payload.value === 'NFL') {
 						var moduleToHide = 'MMM-NFL';
 					}
-					var modules = MM.getModules().withClass(moduleToHide)enumerate(function(module) {
+					MM.getModules().withClass(moduleToHide)enumerate(function(module) {
 	    				module.hide(1000, function() {
                     	//Module hidden.
                 		});
-					});;
+					});
 				} else if (payload.command === "SHOW_MODULE") {
 					console.log("Show Module: " + payload.value);
 				}
