@@ -28,9 +28,11 @@ Module.register('MMM-MQTT-Service',{
 				} else if (payload.command === "WAKE_UP") {
 					MM.getModules().enumerate(function(module) {
 	    				module.show(1000, function() {
-                    	//Module hidden.
+                    	//Module shown.
                 		});
                 	});
+				} else if (payload.command === "HIDE_MODULE") {
+					console.log("Hide Module: " + payload.value);
 				}
 			} else if (payload.receiver === "PODCAST") {
 				console.log("podcast is receiver");
