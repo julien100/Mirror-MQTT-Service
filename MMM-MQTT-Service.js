@@ -32,9 +32,12 @@ Module.register('MMM-MQTT-Service',{
                 		});
                 	});
 				} else if (payload.command === "HIDE_MODULE") {
+					var moduleToHide;
 					console.log("Hide Module: " + payload.value);
 					if (payload.value === 'NFL') {
-						var moduleToHide = 'MMM-NFL';
+						moduleToHide = 'MMM-NFL';
+					} else if (payload.value === 'clock') {
+						moduleToHide = 'clock';
 					}
 					MM.getModules().withClass(moduleToHide).enumerate(function(module) {
 	    				module.hide(1000, function() {
@@ -42,7 +45,18 @@ Module.register('MMM-MQTT-Service',{
                 		});
 					});
 				} else if (payload.command === "SHOW_MODULE") {
-					console.log("Show Module: " + payload.value);
+					var moduleToShow;
+					console.log("Hide Module: " + payload.value);
+					if (payload.value === 'NFL') {
+						moduleToShow = 'MMM-NFL';
+					} else if (payload.value === 'clock') {
+						moduleToShow = 'clock';
+					}
+					MM.getModules().withClass(moduleToShow).enumerate(function(module) {
+	    				module.show(1000, function() {
+                    	//Module shown.
+                		});
+					});
 				}
 			} else if (payload.receiver === "PODCAST") {
 				console.log("podcast is receiver");
