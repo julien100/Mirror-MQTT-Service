@@ -48,13 +48,13 @@ Module.register('MMM-MQTT-Service',{
 					});
 				} else if (payload.command === "SHOW_MODULE") {
 					var moduleToShow;
-					console.log("Hide Module: " + payload.value);
+					console.log("Show Module: " + payload.value);
 					if (payload.value === 'NFL') {
 						moduleToShow = 'MMM-NFL';
 					} else if (payload.value === 'clock') {
 						moduleToShow = 'clock';
 					} else if (payload.value === 'comic') {
-						moduleToHide = 'DailyXKCD';
+						moduleToShow = 'DailyXKCD';
 					}
 					MM.getModules().withClass(moduleToShow).enumerate(function(module) {
 	    				module.show(1000, function() {
