@@ -49,7 +49,6 @@ Module.register('MMM-MQTT-Service',{
 					});
 				} else if (payload.command === "SHOW_MODULE") {
 					var moduleToShow;
-					console.log("Show Module: " + payload.value);
 					if (payload.value === 'NFL') {
 						moduleToShow = 'MMM-NFL';
 					} else if (payload.value === 'clock') {
@@ -72,7 +71,11 @@ Module.register('MMM-MQTT-Service',{
 					});
 
 					MM.getModules().enumerate(function(module) {
+						console.log(module.config.name);
+						console.log(moduleToShow);
+
 						if (module.config.name === moduleToShow) {
+							console.log("Show Module: " + module.name);
 							module.show(1000, function() {
 											//Module shown.
 										});
