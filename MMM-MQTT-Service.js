@@ -63,19 +63,23 @@ Module.register('MMM-MQTT-Service',{
 					});
 
 					MM.getModules().enumerate(function(module) {
-						console.log(module.config.name);
-						console.log(module.data.position);
-						if (module.config.name === moduleToShow) {
-							module.show(1000, function() {
-											//Module shown.
-										});
-						} else if (module.data.position === position) {
+						if (module.data.position === position) {
 							// verstecke das Modul, das aktuell an der Stelle des zu zeigenden Moduls ist
 							module.hide(1000, function() {
 											//Module hidden.
 										});
 						}
 					});
+
+					MM.getModules().enumerate(function(module) {
+						if (module.config.name === moduleToShow) {
+							module.show(1000, function() {
+											//Module shown.
+										});
+						}
+					});
+
+
 				}
 			} else if (payload.receiver === "PODCAST") {
 				console.log("podcast is receiver");
