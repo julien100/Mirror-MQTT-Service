@@ -81,11 +81,8 @@ Module.register('MMM-MQTT-Service',{
 			MM.getModules().enumerate(function(module) {
 				console.log(module);
 				console.log(module.config.hidden);
-				if(module.config.hidden === true){
-					console.log("hide module " + module.name);
 					module.hide(1000, function() {
 					 			});
-				}
 			});
 		}
 	}
