@@ -77,7 +77,7 @@ Module.register('MMM-MQTT-Service',{
 		Log.info('Starting module: ' + this.name);
 	},
 	notificationReceived: function(notification, payload) {
-		if (notification === "ALL_MODULES_STARTED") {
+		if (notification === "DOM_OBJECTS_CREATED") {
 			MM.getModules().enumerate(function(module) {
 				console.log(module);
 				console.log(module.config.hidden);
