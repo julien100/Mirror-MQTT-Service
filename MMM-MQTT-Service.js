@@ -59,15 +59,17 @@ Module.register('MMM-MQTT-Service',{
 					}
 					var position;
 					MM.getModules().withClass(moduleToShow).enumerate(function(module) {
-						position = module.config.position;
+						position = module.data.position;
 					});
 
 					MM.getModules().enumerate(function(module) {
+						console.log(module.config.name);
+						console.log(module.data.position);
 						if (module.config.name === moduleToShow) {
 							module.show(1000, function() {
 											//Module shown.
 										});
-						} else if (module.config.position === position) {
+						} else if (module.data.position === position) {
 							// verstecke das Modul, das aktuell an der Stelle des zu zeigenden Moduls ist
 							module.hide(1000, function() {
 											//Module hidden.
