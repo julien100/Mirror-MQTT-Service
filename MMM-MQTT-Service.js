@@ -78,12 +78,11 @@ Module.register('MMM-MQTT-Service',{
 	},
 	notificationReceived: function(notification, payload) {
 		if (notification === "ALL_MODULES_STARTED") {
-			console.log("debug");
 			MM.getModules().enumerate(function(module) {
-					console.log(module);
-					// module.hide(1000, function() {
-					// 				//Module shown.
-					// 			});
+				if(module.config.hidden === true){
+					module.hide(1000, function() {
+					 			});
+				}
 			});
 		}
 	}
